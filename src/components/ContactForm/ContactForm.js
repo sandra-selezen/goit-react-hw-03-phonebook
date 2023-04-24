@@ -43,7 +43,7 @@ export class ContactForm extends Component {
   render() {
     return (
       <Formik initialValues={initialValues} validationSchema={schema} onSubmit={this.handleSubmit}>
-        <Form>
+        <Form autoComplete="off">
           
           <FormLabel htmlFor={this.numberId}><RiUserFill />Name</FormLabel>
           <FormBox>
