@@ -5,6 +5,7 @@ import { ContactList } from "./ContactList/ContactList";
 import { GlobalStyle } from './GlobalStyle';
 import { Layout } from './Layout/Layout';
 import { Container } from "./Container/Container";
+import toast, { Toaster } from 'react-hot-toast';
 
 export class App extends Component {
   state = {
@@ -27,7 +28,7 @@ export class App extends Component {
 
   addContact = newContact => {
     this.state.contacts.some(contact => contact.name.toLowerCase() === newContact.name.toLowerCase())
-      ? alert("This contact is already in your Phonebook!")
+      ? toast('This contact is already in your Phonebook!', { icon: '👻', })
       : this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
     }));
@@ -63,6 +64,7 @@ export class App extends Component {
           <Filter value={filter} onChange={this.changeFilter}/>
           <ContactList contacts={searchContact} onDeleteContact={this.deleteContact} />
           <GlobalStyle />
+          <Toaster position="top-center" />
         </Container>
       </Layout>
     )
